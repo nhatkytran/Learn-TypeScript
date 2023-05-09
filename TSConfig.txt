@@ -1,0 +1,21 @@
+tsc --noEmitOnError index.ts
+"noEmitOnError": true --> If any Error happens, TS is not going to compile TS file to JS file
+tsc -p ./tsconfig.json | tsc --project ./tsconfig.json
+
+Setting up Auto Compilation
+npm init -y
+npm install parcel --save-dev
+index.html
+src
+  index.ts
+<script type="module" src="./rsc/index.ts"></script>
+tsc --init
+  "noEmitOnError": true
+
+--- Setting up Prettier
+npm install --save-dev --save-exact prettier
+echo {}> .prettierrc.json
+
+"script": "(npx parcel ./index.html) & npx parcel watch ./index.html"
+
+remove "main": "index.js"

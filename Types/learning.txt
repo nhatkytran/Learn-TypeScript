@@ -1,0 +1,215 @@
+--> Primitive Types
+number, string, boolean, bigint, any, unknown
+
+--> Type Inference
+This is how TS automatically infers or understands certain types \
+in code based on the declaration of those types
+
+--> Object Types
+objects
+type aliases
+union types
+Unions and Primitives
+intersections
+Index signatures
+
+--> Arrays in TypeScript
+arrays, tuples, readonly
+
+--> Advance Types
+null, undefined, void, never, enums
+
+------------------------------------------ Primitive Types
+
++++ Introduction to Types +++
+
+--> What are Types?
+--> A "Type" is a definition assigned to a value and defines the things \
+that you can or cannot do with that "kind" of value
++ Definition
++ Actions that CAN or CANNOT be performed
+
++++ any Type +++
+
+--> Default JS behavior --> Type of variable is type of value
+--> Don't use "any" Type until there is no other solution available
+
+"noImplicitAny": true // Default to true in tsconfig.json
+
+--> `any` Type is compatible with all types
+
++++ unknown Type +++
+
+--> The "unknown" Type is a better type than "any" Type
++ TypeScript will not let you perform any operation untill you are \
+sure of the type of value that you are dealing with
+
+--> any --> TypeScript knows that Developer knows the type of value
+--> unknown --> TypeScript knows that Developer doesn't know the type of value
++ If Else to check
+
+--> "unknown" Type --> TypeScript forces you to check the type of \
+particular value before you use it within your program
+
++++ boolean Type +++
+
++++ number Type +++
+
++++ bigint Type +++
+
+--> What is the need to introduce BigInt?
+
+Number.MAX_SAFE_INTEGER --> 2 ** 53 - 1
+--> This is the end of number types
+
++++ string Type +++
+
+------------------------------------------ Type Inference
+
++++ Type Inference - Documentation +++
+
+--> Type inference is used to provide type information when \
+there is no explicit type annotation
+
+--> Best common type
+---
+let x = [0, 1, null]; --> let x: (number | null)[]
+
+let zoo = [new Rhino(), new Elephant(), new Snake()];
+--> let zoo: (Rhino | Elephant | Snake)[]
+
+let zoo: Animal[] = [new Rhino(), new Elephant(), new Snake()];
+--> let zoo: Animal[]
+--> When no best common type is found, the resulting inference \
+is the union array type, (Rhino | Elephant | Snake)[]
+---
+
+--> Contextual Typing
+
+--> Type inference also works in “the other direction” in some cases. \
+This is known as “contextual typing”
+--> Contextual typing occurs when the type of an expression is implied \
+by its location
+
+---
+window.onscroll = function (uiEvent) {
+  console.log(uiEvent.button);
+Property 'button' does not exist on type 'Event'.
+};
+--> TypeScript knows that "uiEvent" is "UIEvent" and does not have \
+button property
+---
+
+---
+function createZoo(): Animal[] {
+  return [new Rhino(), new Elephant(), new Snake()];
+}
+---
+
+---
+// No type annotations here, but TypeScript can spot the bug
+const names = ["Alice", "Bob", "Eve"];
+ 
+// Contextual typing for function
+names.forEach(function (s) {
+  console.log(s.toUppercase());
+Property 'toUppercase' does not exist on type 'string'. Did you mean 'toUpperCase'?
+});
+
+// Contextual typing also applies to arrow functions
+names.forEach((s) => {
+  console.log(s.toUppercase());
+Property 'toUppercase' does not exist on type 'string'. Did you mean 'toUpperCase'?
+});
+---
+
+*** Point to note --> Type Inference
++ Best common type
++ Contextual typing --> the right hand side of an assignment
+
+------------------------------------------ Type Annotations + Type Inference
+
+--> Type Annotations
++ Code we add to tell TypeScript what type of value a variable will refer to
+--> Type Inference
++ TypeScript tries to figure out what type of value a variable refers to
+
+--> Type Anotations
+
++ with Variables
+---
+let a: number = 123;
+let b: string = 'string';
+---
+
++ with Objects
+---
+// Arrays
+let colors: string[] = ['red', 'green', 'blue'];
+// Classes
+class Car {};
+const car: Car = new Car();
+// Object literal
+const point: { x: number; y: number } = { x: 10, y: 20 };
+---
+
++ with Functions
+---
+const logger: (number: number) => void = (number: number) => {
+  console.log(number);
+};
+const logger = (number: number): void => {
+  console.log(number);
+};
+---
+
+--> Type Inference
+
+--> TypeScript Data Validation with ts-interface-checker
+https://www.udemy.com/course/typescript-the-complete-developers-guide/learn/lecture/15066434#questions/8654384
+
+------------------------------------------
+
++++ Type Inference in TypeScript +++
+
+--> Rely on Type Inference whenever we can
+--> Declare explitcit types when we need to
+
++++ Object Type +++
+
+--> Object Types and Optional Properties
+
++++ Type Aliases with type Keyword +++
+
++++ Union Types +++
+
+--> Two or more other types called union's members
+--> In some case, narrow union with checking if else
+--> Complete (Dog | Cat) and can have all properties
+
++++ Union Types with Primitive Types +++
+
++++ Intersection Types in TypeScript +++
+
++++ Index Signatures +++
+
+------------------------------------------ Arrays
+
++++ Arrays in TypeScript +++
+
+--> type[] and Array<type>
+
++++ Tuple +++
+
+--> Optional properties
+--> Rest elements
+
++++ Readonly Arrays +++
+
+------------------------------------------ Advance
+
++++ null and undefined in TypeScript +++
+
++++ void and never types +++
+
++++ Enums +++

@@ -1,0 +1,24 @@
+--> What is TypeScript?
+--> TypeScript is JavaScript with syntax for types
+--> TypeScript is strongly typed programming language that builds \
+on JavaScript, giving better tooling at any scale
+
+--> Download TypeScript
+--> Instantiate a TypeScript configuration file
+tsc --init
+
+--> Browser doesn't understand TypeScript
+--> Compile TypeScript to JavaScript
+tsc index.ts
+
+--> Error happens but TS still compresses the file
+--> Config this so if Error happens TS doesn't compress file
+tsc --noEmitOnError index.ts --> using TS config file
+
+*** Point to note
+--> TypeScript is just a transpiler
+--> TypeScript is available to us during development time
+--> TypeScript is compiled to vanilla JavaScript
+
+--> Sometimes TypeScript adds a bunch of things to implement features \
+that are not available to JavaScript --> Polyfill
