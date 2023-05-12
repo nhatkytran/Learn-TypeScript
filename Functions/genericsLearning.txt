@@ -1,0 +1,25 @@
+--> Polymorphism
++ How can we move away from concrete implementations?
++ Why we need a polymorphic functions?
++ Why function overloads are not good solution \
+for complex polymorphic implementations?
+
+--> All About Generics
++ What are generics?
++ Where and how can generics be used?
+
++++ Polymorphic Implementation +++
+
+--> Concrete Types --> string, number, boolean or even custom Types
+
++++ Need for Polymorphic Functions +++
+
+--> Predicate function --> Either returns true or false
+
++++ Problem with Function Overloads +++
+
++++ Introducing Generics +++
+
++++ Where you can declare Generics +++
+
+@ts-ignore

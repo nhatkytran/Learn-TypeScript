@@ -1,0 +1,38 @@
+--> Basic of Functions in TypeScript
+
+--> declaring functions
++ The concept of declaring type safe functions
++ Apply types to function parameters
+
+--> default and optional parameters
++ declare default and optional parameters
+
+---
+
+--> All About Functions
++ custom params
++ custom returns
++ call signatures
+
+--> Polymorphism in Functions
++ What are polymorphic functions
++ Why we need polymorphic functions
++ How to create polymorphic functions using Function Overloading
+
+---------------------------------
+
++++ Declaring Functions in TypeScipt +++
+
++++ Default and Optional Parameters +++
+
++++ Intro to Function Overloading +++
+
+--> JavaScript is a dynamic language and it's common pattern \
+to call the same function in multiple ways with different parameters \
+and often having different types of return values
+--> TypeScript maintains this dynimism by using function overloads
+
+--> call signature is a short hand syntax
+--> assign multiple call signatures to a single function type
+
++++ Using same Function with Different Params +++

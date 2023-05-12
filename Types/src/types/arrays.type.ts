@@ -72,3 +72,10 @@
   type A = Readonly<string[]>;
   type C = Readonly<[string, string, number]>;
 }
+
+{
+  let array: string[] = [];
+  let number: number | unknown = 123;
+
+  array.push(number as string);
+}

@@ -8,14 +8,14 @@ npm install parcel --save-dev
 index.html
 src
   index.ts
-<script type="module" src="./rsc/index.ts"></script>
+<script defer type="module" src="./rsc/index.ts"></script>
 tsc --init
   "noEmitOnError": true
+  "noImplicitAny": true
 
 --- Setting up Prettier
 npm install --save-dev --save-exact prettier
 echo {}> .prettierrc.json
 
 "script": "(npx parcel ./index.html) & npx parcel watch ./index.html"
-
 remove "main": "index.js"
