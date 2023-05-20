@@ -112,14 +112,14 @@
         destination: departingFromOrDestination,
       };
 
-    throw new Error('Please privide valid details to reserver a ticket!');
+    throw new Error('Please privide valid details to reserve a ticket!');
   };
 }
 
 {
   type Reservation = {
     departureDate: Date;
-    returnDate: Date;
+    returnDate?: Date;
     departuringFrom: string;
     destinaiton: string;
   };
