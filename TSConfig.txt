@@ -8,7 +8,7 @@ npm install parcel --save-dev
 index.html
 src
   index.ts
-<script defer type="module" src="./rsc/index.ts"></script>
+<script defer type="module" src="./src/index.ts"></script>
 tsc --init
   "noEmitOnError": true
   "noImplicitAny": true

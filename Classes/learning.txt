@@ -1,0 +1,43 @@
++++ Module Introduction: Classes and Inheritance +++
+
+--> Introduction to Classes
++ What are classes?
++ What is an instance of a class?
++ What are constructor functions?
++ What is the this keyword?
+...
+
+--> Inheritance Using Classes
++ What is Inheritance?
++ How can classes be used for Inheritance?
+
+--> Access Modifiers
++ What are Access Modifiers?
++ What are Protected, Private and Public access modifiers?
+
+--> Accessors and Mutators
++ What are Accessors and Mutators?
++ Why are they needed and how are they helpful?
+
++++ What is a Class?
+--> In Object-Oriented Programming, a Class is a blueprint \
+for creating objects. A class defines the initial values of \
+various properties and methods of an object
+
++++ Creating first Class
+
++++ Creating an Instance of a Class
+
+--> Prototypes are the default way of leveraging Inheritance \
+in JavaScript
+
++++ Constructor Function in Classes
+
+--> Instantiation --> Creation + Initialization
+
++++ Access Modifiers for Class Properties
+
+--> Access Modifiers restrict the access of properties \
+and methods or the members of the class to its child class \
+or to an instance depending on which access modifier \
+you are using
