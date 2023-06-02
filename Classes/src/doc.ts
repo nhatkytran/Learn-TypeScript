@@ -1,0 +1,42 @@
+// No need to initialize with ! operator
+{
+  class Person1 {
+    firstname: string;
+  }
+
+  class Person2 {
+    firstname!: string;
+  }
+
+  const person = new Person2();
+
+  console.log(person.firstname);
+}
+
+// readonly --> Prevent assignment outside of the constructor
+
+{
+  interface Animal {
+    dateOfBirth: any;
+  }
+
+  interface Dog extends Animal {
+    breed: any;
+  }
+
+  class AnimalHouse {
+    resident: Animal;
+    constructor(animal: Animal) {
+      this.resident = animal;
+    }
+  }
+
+  class DogHouse extends AnimalHouse {
+    // Does not emit JavaScript code,
+    // only ensures the types are correct
+    declare resident: Dog;
+    constructor(dog: Dog) {
+      super(dog);
+    }
+  }
+}

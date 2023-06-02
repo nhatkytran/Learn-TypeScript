@@ -1,0 +1,70 @@
++++ Introduction +++
+
+--> File and Compiler Options
++ File Options --> Options related to how \
+TypeScript treats TypeScript files
++ Type Checking Options --> Options that alter \
+TypeScript's behavior related to type checking \
+and other code related features that TypeScript offers
+
+--> File Watcher and Source Maps
++ How to use the built in file watcher and \
+source maps during development with TypeScript
+
++++ Setting up a base project +++
+
+npm init -y
+
+touch app.ts
+
+tsc --init
+---
+noEmitOnError: true
+---
+
++++ Using the watch mode +++
+
+touch app2.ts
+
+tsc
+
+tsc --watch
+tsc --help
+
++++ Including and Excluding Files +++
+
+"exclude": ["node_modules"] --> Default
+--> When specify "exclude" again, remember to add "node_modules"
+"exclude": ["app2.ts", "node_modules", "*.exclude.ts", "**/*.exclude.ts"]
+
+"include": ["src"]
+
++++ rootDir and outDir +++
+
+"rootDir": "./src" --> TS compiles .ts files in the root folder
+"outDir": "./dist" --> Store JS files created and TS will follow the same \
+structure of rootDir
+
++++ Setting a Compilation Target +++
+
+https://github.com/tsconfig/bases
+--> tsconfig.json for Create React App, Cypress,...
+
++++ TypeScript Core Libs +++
+
+"target"
+"lib" --> TypeScript automatically chooses the libraries as dependencies
+
++++ Type Checking Options +++
+
+"strict": true
+--> If strict is set to true, this means all the options are set to true
+
+"noUnusedLocals": true,
+"noUnusedParameters": true,
+"noImplicitReturns": true,
+"allowUnreachableCode": false
+
++++ Understanding Source Maps +++
+
+"sourceMap": true

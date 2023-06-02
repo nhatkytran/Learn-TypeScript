@@ -139,9 +139,7 @@
 }
 
 // Access Modifiers for Class Properties
-
 // Public and Private members
-
 // Protected Members in a Class
 {
   class User {
