@@ -1,0 +1,11 @@
+{
+  "name": "prototypesandobjects",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "tsc --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

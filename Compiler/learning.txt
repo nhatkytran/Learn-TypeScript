@@ -20,6 +20,7 @@ touch app.ts
 tsc --init
 ---
 noEmitOnError: true
+"noImplicitAny": true
 ---
 
 +++ Using the watch mode +++
@@ -67,4 +68,4 @@ https://github.com/tsconfig/bases
 
 +++ Understanding Source Maps +++
 
-"sourceMap": true
+"sourceMap": true --> Help debugger easier --> See Error .ts in console tab
