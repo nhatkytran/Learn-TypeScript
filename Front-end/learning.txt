@@ -1,0 +1,327 @@
+Create React App
+npx create-react-app todo-react --template typescript
+
+----------
+
+ESLint
+npm install eslint --save-dev
+npx eslint --init
+--> To check syntax and find problems
+--> JavaScript modules (import/export)
+--> React
+--> Does your project use TypeScript? Yes
+--> Where does your project run? Browser
+--> What format do you want your config file to be in? JSON
+--> Install packages? Yes
+--> Package manager? npm
+
+npm install eslint-plugin-import eslint-import-resolver-typescript --save-dev
+
+.eslintrc.json
+---
+"settings": {
+  "import/resolver": {
+    "typescript": {}
+  }
+}
+---
+
+Extension for VS Code --> ESLint
+
+----------
+
+npm install prettier eslint-config-prettier eslint-plugin-prettier --save-dev
+.prettierrc file
+.eslintrc.json
+---
+"extends": [
+  ...,
+  "prettier"
+],
+"plugins": [..., "prettier"]
+---
+
+----------
+
+Delete some unused files
+Convert Function to Arrow function
+
+import { FC, ReactElement } from 'react';
+FC or FunctionComponent --> The same
+
+----------
+
+src
+  components
+  pages
+  theme
+
+Material UI --> Component Library
+
+npm install @mui/material @emotion/react @emotion/styled
+
+--> MUI Documentation --> How-to-guides --> TypeScript
+tsconfig.json
+{
+  "compilerOptions": {
+    "lib": ["es6", "dom"], // tsconfig.json --> "esnext" takes care
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true
+  }
+}
+
+---------- Create custom Material UI Theme ----------
+
+--> customization/default-theme
+
+theme/customTheme.ts
+---
+import { createTheme, ThemeOptions } from '@mui/material';
+
+// createTheme --> override default properties
+// ThemeOptions --> the type safety that we need while \
+// creating the material UI theme
+
+export const customTheme: ThemeOptions = createTheme({
+  pallete: {
+    mode:...,
+    primary:...
+  }
+});
+---
+
+App.tsx
+---
+import { ThemeProvider, CssBaseLine } from '@mui/material';
+
+// CssBaseLine --> A CSS reset, which is created by Material UI
+
+const App: FC = (): ReactElement => {
+  return (
+    <ThemeProvider theme={customTheme}>
+      <CssBaseline />
+      ...
+    </ThemeProvider>
+  );
+};
+---
+
+---------- Creating our first page ----------
+
+pages/dasboard/dasboard.tsx
+
+---------- Breaking Dashboard into Components ----------
+
+Extension --> Auto Import
+
+components/sidebar/sidebar.tsx
+components/taskArea/taskArea.tsx
+
+---------- Creating Porfile Component ----------
+
+components/profile/profile.tsx
+
+---------- Porfile Component Layout ----------
+
+---------- Adding Props ----------
+
+npm install prop-types
+
+---
+import PropTypes from 'prop-types';
+
+export const FC = (props: any) => {}
+
+FC.propTypes = {
+  name: PropTypes.string
+}
+---
+
+---------- Using TypeScript with Props ----------
+
+With interface, we can name: `I${componentName}`
+---
+interface IProfile {}
+FC<IProfile>
+---
+
+---------- Interfaces or PropTypes ----------
+
+Interfaces throw error at compile time --> TypeScript thing
+PropTypes throw error at run time --> JavaScript thing
+
+---------- Creating CreateATask Component ----------
+
+components/createTaskForm/createTaskForm.tsx
+
+---------- Creating Title and Description Components ----------
+
+components/createTaskForm/
+_taskTitleField.tsx
+_taskDescriptionField.tsx
+
+Stack component for adding space
+---
+<Stack sx={{ width: '100%' }} spacing={2}>
+  <TaskTitleField />
+  <TaskDescriptionField />
+</Stack>
+---
+
+---------- Making Components Dynamic Using Interfaces ----------
+
+components/createTaskForm/interfaces
+IDisabled.ts
+---
+export interface IDisabled {
+  disabled?: boolean;
+}
+---
+ITextField.ts
+---
+import React from 'react';
+import { IDisabled } from './IDisabled';
+
+export interface ITextField extends IDisabled {
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+}
+---
+
+--> Apply ITextField for TaskTitleField and TaskDescriptionField
+
+---------- Using PropTypes ----------
+
+---
+import PropTypes from 'prop-types';
+TaskTitleField.propTypes = {
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func
+}
+---
+
+---------- Creating DateField Component ----------
+
+createTaskForm/_taskDateField.tsx
+
+npm install @mui/x-date-pickers
+npm install date-fns
+
+---
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+
+<LocalizationProvider dateAdapter={AdapterDateFns}>
+  <DesktopDatePicker
+    label="Task Date"
+    format="dd/MM/yyyy"
+    value={date}
+    onChange={value => setDate(value)}
+  />
+</LocalizationProvider>
+---
+
+---------- Adding Props to DateField ----------
+
+/interfaces/IDateField.ts
+---
+export interface IDateField extends IDisabled {
+  value?: Date | null;
+  onChange?: (date: Date | null) => void;
+}
+
+implement for TaskDateField (remove useState)
+
+use PropTypes
+TaskDateField.propTypes = {
+  disabled: PropTypes.bool,
+  value: PropTypes.instanceOf(Date),
+  onChange: PropTypes.func,
+};
+---
+
+---------- Creating taskSelectField Component ----------
+
+createTaskForm/_taskSelectField.jsx
+---
+<Stack>
+  ...
+  <Stack sx={{ width: '100%' }} direction="row" spacing={2}>
+    <TaskSelectField />
+  </Stack>
+</Stack>
+---
+
+---------- Interfaces for taskSelectField ----------
+
+interfaces/ISelectField.ts
+
+---------- PropTypes and Dynamic Options ----------
+
+createTaskForm/enums/
+Status.ts
+Prioty.ts
+
+pass props to <TaskSelectField label name items />
+
+---------- Task Area Layout ----------
+
+taskArea.tsx
+---
+import { format } from 'date-fns';
+{format(new Date(), 'PPPP')}
+---
+
+---------- The Task Counter Component ----------
+
+components/taskCounter/taskCounter.tsx
+
+---------- Styling The Task Counter ----------
+
+---------- Making Values Dynamic ----------
+
+taskCounter/interfaces/ITaskCounter.ts
+
+---------- Creating The Correct Border Color ----------
+
+taskCounter/helpers/emitCorrectBorderColor.ts
+
+---------- Emitting Correct Label ----------
+
+emitCorrectLabel.ts
+
+---------- Starting with the Task Component ----------
+
+components/task/
+helpers
+interfaces
+task.tsx
+
+---------- The Task Header Component ----------
+
+_taskHeader.tsx
+ITaskHeader.ts
+
+---------- Task Description Component ----------
+
+_taskDescription.tsx
+ITaskDescription.ts
+
+---------- Task Footer Component ----------
+
+_taskFooter.tsx
+
+---------- Making Task Footer Dynamic ----------
+
+ITaskFooter.ts
+
+---------- Adding Props to Task Component ----------
+
+ITask.ts
+
+---------- Dynamic Colors to Border in Task Component ----------
+
+renderPriorityBorderColor.ts
+
+---------- Concluding Front-end Development ----------

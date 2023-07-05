@@ -1,5 +1,7 @@
 // Advanced Concepts and Features
 
+import { type } from 'os';
+
 // Subtypes and Supertypes
 {
   // If Type B is subtype of Type A, we can use Type B safely \
@@ -327,4 +329,25 @@
 
   colors.green.toUpperCase();
   colors.blue.toUpperCase();
+}
+
+// Awaited<Type>
+{
+  const promise: Promise<string> = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Data');
+    }, 1000);
+  });
+
+  type AwaitedType = Awaited<typeof promise>;
+}
+
+// String Manipulation Types
+{
+  type City = 'New York' | 'London' | 'Tokyo';
+
+  type UppercaseCity = Uppercase<City>; // "NEW YORK" | "LONDON" | "TOKYO"
+  type LowercaseCity = Lowercase<City>; // "new york" | "london" | "tokyo"
+  type CapitalizeCity = Capitalize<City>; // "New York" | "London" | "Tokyo"
+  type UncapitalizeCity = Uncapitalize<City>; // "london" | "tokyo" | "new York"
 }
