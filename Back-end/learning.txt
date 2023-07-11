@@ -1,0 +1,138 @@
+1. Set up Node Server: Express, Morgan
+
+2. Using TypeScript
+
+npm install typescript @types/node @types/express --save-dev
+tsc --init
+---
+"experimentalDecorators": true,
+"emitDecoratorMetadata": true,
+"outDir": "./dist",
+"noImplicitAny": true,
+"strictPropertyInitialization": false,
+"noUnusedLocals": true,
+"noImplicitReturns": true
+---
+
+3. index.js --> index.ts
+
+import express, { Express, Request, Response } from 'express';
+
+dotenv
+
+`tsc` command
+
+4. nodemon and ts-node
+
+npm install nodemon ts-node
+---
+"dev": "nodemon app.ts",
+"build": "npx tsc",
+"start": "node dist/app.js"
+---
+
+5. ESlint + Prettier
+
+npm install eslint --save-dev
+npx eslint --init
+--> To check syntax and find problems
+--> JavaScript modules (import/export)
+--> None of these
+--> Yes
+--> Node
+--> JSON
+--> Yes
+--> npm
+
+npm install prettier eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier --save-dev
+
+.eslintrc.json
+---
+"extends": [..., "prettier"],
+"plugins": [..., "prettier"],
+"settings": {
+  "import/resolver": {
+    "typescript": {}
+  }
+}
+---
+
+.prettierrc
+
+6. TypeORM
+
+ORM stands for Object Relational Mapping
+
+TypeORM --> A layer of abstraction convert code objects \
+and save them to the database (MySQL, Postgres, SQLite, MariaDB,...)
+
+npm install typeorm reflect-metadata mysql2
+
+reflect-metadata --> polyfill for JS to work with TypeORM
+
+7. Cors
+
+npm install cors @types/cors
+
+8. TypeORM Entity
+
+Entity in TypeORM is Table Schema or Model
+
+src
+  enums
+    Priority.ts
+    Status.ts
+  tasks
+    tasks.entity.ts
+
+9. Primary Key
+
+rimaryGeneratedColumn
+
+const AppDataSource = new DataSource({
+  entities: [Task]
+});
+
+10. Completing Task Entity
+
+src/tasks/tasks.router.ts
+--> create tasksRouter --> '/tasks'
+
+11. Creating A Tasks Controller
+
+tasks.controller.ts
+
+12. Creating A TypeORM Repository (like Model in Mongoose)
+
+---
+import { AppDataSource } from '../../app';
+import { Task } from './tasks.entity';
+export class TaskController {
+  constructor(private taskRepository = AppDataSource.getRepository(Task)) {}
+}
+---
+
+13. Using Repository to get all Tasks
+
+14. Introduction to Class Transformer
+
+We need to convert Task instance to plain object created by TypeORM \
+so Express can use that data
+
+npm install class-transformer
+
+15. Creating the Post Endpoint
+
+16. Express Validator
+
+npm install express-validator
+
+tasks.validator.ts
+
+17. Update Request Validator
+
+18. PUT Request Route
+
+19. Implementation of Update Method
+
+20. Testing and Conclusion
